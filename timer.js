@@ -18,7 +18,7 @@ class Timer
         this.timer_interval = interval;
     }
 
-    getTimerInterval(interval)
+    getTimerInterval()
     {
         return this.timer_interval;
     }
@@ -39,10 +39,15 @@ class Timer
         return this.social_sites;
     }
 
+    getSeconds()
+    {
+        return this.seconds;
+    }
+
     //Decrements the Timer and Triggers Event at 0
     tick()
     {
-        console.log(this.seconds);
+        console.log("Timer Value: " + this.seconds);
 
         this.seconds -= 1;
 
@@ -60,15 +65,16 @@ class Timer
         clearInterval(this.timer_interval);
         this.timer_interval = null;
         this.active = false;
+        console.log("Timer Reset");
     }
 };
 
 //Function: pop_up
-//Purpose: ?????????
+//Purpose: Creates the Brainteaser Popup in a New Tab
 function pop_up()
 {
-    //Integrate Later
-    console.log("brainteaser");
+    console.log("Brainteaser");
+    chrome.tabs.create({url:"popup.html"});
 };
 
 //Function: getCurrentTab
@@ -93,8 +99,7 @@ async function getCurrentTab()
 async function site_match(timer)
 { 
     var url_found = false;
-    var url = await getCurrentTab(); //Needs to Be Tested
-    //var url = "https://www.facebook.com/";
+    var url = await getCurrentTab();
     var sites = timer.getSites();
 
     for (let i = 0; i < sites.length; i++) 
@@ -136,13 +141,20 @@ async function url_check(timer)
             var timer_interval = setInterval(timer_tick, 1000, timer);
             timer.setTimerInterval(timer_interval);
             timer.setActive(true);
-            //clearInterval(url_interval);
         }
         else if (timer.getTimerInterval() != null)
         {
             timer.reset();
         }
     }
+
+    chrome.notifications.create('NOTFICATION_ID', {
+        type: 'basic',
+        iconUrl: 'brainteaserIcon.png',
+        title: 'notification title',
+        message: 'notification message',
+        priority: 2,
+    });
 };
 
 
@@ -155,5 +167,5 @@ async function url_check(timer)
 //Main Stuff
 var social_media_sites = ["https://www.instagram.com/", "https://www.facebook.com/"];
 var recheckTime = 2000; //2 Seconds Refresh Time
-var timer = new Timer(20.0 * 60.0, social_media_sites, pop_up);
+var timer = new Timer(20.0, social_media_sites, pop_up);
 var url_interval = setInterval(url_check, recheckTime, timer);
