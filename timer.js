@@ -147,14 +147,6 @@ async function url_check(timer)
             timer.reset();
         }
     }
-
-    chrome.notifications.create('NOTFICATION_ID', {
-        type: 'basic',
-        iconUrl: 'brainteaserIcon.png',
-        title: 'notification title',
-        message: 'notification message',
-        priority: 2,
-    });
 };
 
 
