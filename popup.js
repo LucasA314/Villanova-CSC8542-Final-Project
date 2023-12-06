@@ -10,15 +10,15 @@ function displayRandomBrainTeaser()
     var questions = [
       {
         question: "What has keys but can't open locks?",
-        answer: "a piano"
+        answer: "piano"
       },
       {
         question: "What belongs to you but other people use it more than you?",
-        answer: "your name"
+        answer: "myname"
       },
       {
         question: "The person who makes it, sells it. The person who buys it never uses it. The person who uses it never knows they've got it. What is it?",
-        answer: "a coffin"
+        answer: "coffin"
       }
     ];
     
