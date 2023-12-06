@@ -19,7 +19,7 @@ function displayRandomBrainTeaser()
       {
         question: "The person who makes it, sells it. The person who buys it never uses it. The person who uses it never knows they've got it. What is it?",
         answer: "coffin"
-      }
+      },
       {
         question: "I am taken from a mine and shut up in a wooden case, from which I am never released, and yet I am used by almost every person. What am I?",
         answer: "Pencillead"
@@ -31,7 +31,7 @@ function displayRandomBrainTeaser()
       {
         question: "What comes once in a minute, twice in a moment, but never in a thousand years?",
         answer: "letterM"
-      }
+      },
       {
         question: "I speak without a mouth and hear without ears. I have nobody, but I come alive with the wind. What am I?",
         answer: "echo"
