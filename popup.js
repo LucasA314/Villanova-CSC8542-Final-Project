@@ -30,6 +30,12 @@ function displayRandomBrainTeaser()
     {
       //Prompt the User
       var userAnswer = prompt(promptText, "Answer Here");
+       // Check if the user pressed "Cancel"
+            if (userAnswer === null) {
+              // Handle cancelation
+                  alert("You canceled the brainteaser. Try again later!");
+            return; // Exit the function
+    } 
       userAnswer = userAnswer.toLowerCase();
       
       //Display a Message if the Answer is Incorrect
